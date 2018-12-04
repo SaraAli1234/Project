@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Update item</title>
+</head>
+
+</body>
+<div align="center">
+	<h4>Delete patient record </h4>
+
+	<h4>Using HTTP DELETE method to route </h4>
+</div>
+
+<div>Note: that patient name must exist</div>
+
+<form id="deleteItemForm" action="/patients" method="POST">
+
+   Enter paitent ID: <input type="text" name="Patient_ID"><br>
+  
+  Enter your first name: <input type="text" name="First_name"><br>
+  
+  Enter your last name: <input type="text" name="Last_name"><br>
+  
+  Phone Number: <input type="text" name="Phone_number"><br>
+  
+  DOB: <input type="text" name="DOB"><br>
+  
+  Doctor ID: <input type="text" name="Doctor_ID"><br>
+  
+  <input type="button" value="Load Item Data" onclick="loadData()"/>
+  &nbsp;&nbsp;&nbsp;
+  <input type="submit" value="Delete Item" />
+</form>
+</body>
+</html> 

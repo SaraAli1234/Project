@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>Patient</title>
+	</head>
+
+	<body>
+
+        <h3> Web Page for Latifa Hospital to add, update and delete information .</h3>
+		<div id="itemsCount"> </div>
+		<div id="itemsDiv"> </div>
+
+        <br />
+
+        <div align="left">
+		    <h2> Patient </h2>
+            <a href="AddItem.html"> Add a new patient </a> (using POST to /items)
+            <br />
+            <a href="UpdateItem.html"> Update patient information </a> (using PUT to /items)
+            <br />
+            <a href="DeleteItem.html">Delete patient </a> (using DELETE to /items)
+			<br />
+			<br/>
+			<h2> Doctor </h2>
+			<a href="AddDr.html"> Add a new doctor </a> (using POST to /items)
+            <br />
+            <a href="UpdateDr.html"> Update doctor information </a> (using PUT to /items)
+            <br />
+            <a href="DeleteDr.html">Delete doctor </a> (using DELETE to /items)
+			<br />
+			<br/>
+			<h2> Appointment </h2>
+			<a href="AddDr.html"> Add a new Appointment </a> (using POST to /items)
+            <br />
+            <a href="UpdateDr.html"> Update Appointment information </a> (using PUT to /items)
+            <br />
+            <a href="DeleteDr.html">Delete Appointment </a> (using DELETE to /items)
+        </div>
+
+        <script>
+			function handleResponse() {
+  				console.log(this.responseText);
+
+  				let itemsDiv = document.getElementById("itemsDiv");
+  				//convert responseText to a JS object
+  				let jsonArray = JSON.parse(this.responseText);
+
+  				let itemsCount = document.getElementById("itemsCount");
+  				itemsCount.innerHTML = "We have found " +jsonArray.length + " items!";
+
+  				let counter = 0;
+  				for (let item of jsonArray) {
+  					let span = document.createElement("span");
+                      let itemString = ++counter +". "+item.First_name + " - " + item.Last_name + " - " + item.Phone_number;
+										
+  					let spanText = document.createTextNode(itemString);
+  					span.appendChild(spanText);
+
+  					//add the p to the itemsDiv
+                    itemsDiv.appendChild(span);
+                    itemsDiv.appendChild(document.createElement("br"));  
+  				}
+			}
+
+			let httpRequest = new XMLHttpRequest();
+			httpRequest.addEventListener("load", handleResponse);
+			httpRequest.open("GET", "http://localhost:7979/");
+			httpRequest.send();
+		</script>
+
+	</body>
+
+</html>
